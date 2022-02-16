@@ -1,0 +1,4 @@
+url_tops: https://www.tops.co.th/en/
+get_product_enpoint: https://www.tops.co.th/v2/api/catalog/tops_sa_432_en/products/search?searchCriteria%5Bfilter_groups%5D%5B9%5D%5Bfilters%5D%5B0%5D%5Bfield%5D=search_term&searchCriteria%5Bfilter_groups%5D%5B9%5D%5Bfilters%5D%5B0%5D%5Bvalue%5D=product_sku
+headless: 'false'
+GLOBALTIMEOUT: 60

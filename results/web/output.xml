@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.1 (Python 3.9.10 on win32)" generated="20220216 18:25:29.872" rpa="false" schemaversion="2">
+<suite id="s1" name="Web" source="E:\Hue_repo\interview-automation\testcases\web">
+<suite id="s1-s1" name="Add Product To Wishlist" source="E:\Hue_repo\interview-automation\testcases\web\add_product_to_wishlist.robot">
+<kw name="Open chrome browser and redirect Tops Website" library="common" type="SETUP">
+<kw name="Evaluate" library="BuiltIn">
+<var>${chrome options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20220216 18:25:30.364" level="INFO">${chrome options} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000026EF2458FD0&gt;</msg>
+<status status="PASS" starttime="20220216 18:25:30.364" endtime="20220216 18:25:30.364"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>disable-gpu</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20220216 18:25:30.364" endtime="20220216 18:25:30.364"/>
+</kw>
+<if>
+<branch type="IF" condition="'${headless}' == 'true'">
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="NOT RUN" starttime="20220216 18:25:30.364" endtime="20220216 18:25:30.365"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--window-size\=1920,1080</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="NOT RUN" starttime="20220216 18:25:30.365" endtime="20220216 18:25:30.365"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${\n}***** Open Tops websit in headless mode *****</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220216 18:25:30.365" endtime="20220216 18:25:30.365"/>
+</kw>
+<status status="NOT RUN" starttime="20220216 18:25:30.364" endtime="20220216 18:25:30.365"/>
+</branch>
+<branch type="ELSE IF" condition="'${headless}' == 'false'">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${\n}***** Open Tops websit in desktop mode *****</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220216 18:25:30.366" endtime="20220216 18:25:30.367"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:30.366" endtime="20220216 18:25:30.367"/>
+</branch>
+<status status="PASS" starttime="20220216 18:25:30.364" endtime="20220216 18:25:30.367"/>
+</if>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20220216 18:25:30.367" endtime="20220216 18:25:30.367"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-dev-shm-usage</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20220216 18:25:30.367" endtime="20220216 18:25:30.367"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>Chrome</arg>
+<arg>chrome_options=${chrome options}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20220216 18:25:30.368" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20220216 18:25:30.367" endtime="20220216 18:25:31.517"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220216 18:25:31.517" endtime="20220216 18:25:31.671"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${url_tops}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220216 18:25:31.672" level="INFO">Opening url 'https://www.tops.co.th/en/'</msg>
+<status status="PASS" starttime="20220216 18:25:31.671" endtime="20220216 18:25:35.462"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:30.354" endtime="20220216 18:25:35.462"/>
+</kw>
+<test id="s1-s1-t1" name="Add Product To Wishlist Successfully">
+<kw name="Run Keywords" library="BuiltIn" type="SETUP">
+<arg>home_keywords.Go to login page</arg>
+<arg>AND</arg>
+<arg>login_keywords.Login tops website successfully</arg>
+<arg>${test_acc_1.username}</arg>
+<arg>${test_acc_1.password}</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<kw name="Go to login page" library="home_keywords">
+<doc>Go to login page</doc>
+<kw name="Click Close Popup Reminder" library="home_page">
+<doc>Click close reminder on home page</doc>
+<kw name="Click Element When Ready" library="common">
+<arg>${home_page.close_reminder}</arg>
+<kw name="Wait web element is visible" library="common">
+<arg>${location}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220216 18:25:35.470" endtime="20220216 18:25:35.522"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:35.467" endtime="20220216 18:25:35.522"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${location}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220216 18:25:35.523" level="INFO">Clicking element 'xpath=//span[@class='ins-web-opt-in-reminder-close-button']'.</msg>
+<status status="PASS" starttime="20220216 18:25:35.522" endtime="20220216 18:25:35.660"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:35.465" endtime="20220216 18:25:35.660"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:35.464" endtime="20220216 18:25:35.660"/>
+</kw>
+<kw name="Click login" library="home_page">
+<doc>Click login on home page</doc>
+<kw name="Click Element When Ready" library="common">
+<arg>${home_page.login}</arg>
+<kw name="Wait web element is visible" library="common">
+<arg>${location}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220216 18:25:35.663" endtime="20220216 18:25:35.741"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:35.662" endtime="20220216 18:25:35.741"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${location}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220216 18:25:35.741" level="INFO">Clicking element 'xpath=//div[contains(@class,'LoginSectio')]//button[.='Login']'.</msg>
+<status status="PASS" starttime="20220216 18:25:35.741" endtime="20220216 18:25:35.835"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:35.661" endtime="20220216 18:25:35.835"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:35.661" endtime="20220216 18:25:35.835"/>
+</kw>
+<kw name="Check login page is displayed" library="login_page">
+<doc>Check login page has show</doc>
+<kw name="Wait web element is visible" library="common">
+<arg>${login_page.btn_login}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220216 18:25:35.837" endtime="20220216 18:25:36.127"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:35.836" endtime="20220216 18:25:36.127"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:35.835" endtime="20220216 18:25:36.127"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:35.464" endtime="20220216 18:25:36.127"/>
+</kw>
+<kw name="Login tops website successfully" library="login_keywords">
+<arg>${test_acc_1.username}</arg>
+<arg>${test_acc_1.password}</arg>
+<doc>Login with username and password success</doc>
+<kw name="Input username" library="login_page">
+<arg>${username}</arg>
+<doc>Input username to username text box</doc>
+<kw name="Input Text To Element When Ready" library="common">
+<arg>${login_page.txt_username}</arg>
+<arg>${username}</arg>
+<kw name="Wait web element is visible" library="common">
+<arg>${location}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220216 18:25:36.130" endtime="20220216 18:25:36.188"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:36.129" endtime="20220216 18:25:36.189"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220216 18:25:36.189" level="INFO">Typing text 'interview.automation@gmail.com' into text field 'xpath=//div//input[@placeholder='Please insert your email']'.</msg>
+<status status="PASS" starttime="20220216 18:25:36.189" endtime="20220216 18:25:36.646"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:36.129" endtime="20220216 18:25:36.646"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:36.128" endtime="20220216 18:25:36.646"/>
+</kw>
+<kw name="Click see password button" library="login_page">
+<doc>Click to show password</doc>
+<kw name="Click Element When Ready" library="common">
+<arg>${login_page.btn_eye_on}</arg>
+<kw name="Wait web element is visible" library="common">
+<arg>${location}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220216 18:25:36.648" endtime="20220216 18:25:36.685"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:36.647" endtime="20220216 18:25:36.685"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${location}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220216 18:25:36.686" level="INFO">Clicking element 'xpath=//div[@class='field field-password']//img'.</msg>
+<status status="PASS" starttime="20220216 18:25:36.686" endtime="20220216 18:25:36.736"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:36.646" endtime="20220216 18:25:36.736"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:36.646" endtime="20220216 18:25:36.736"/>
+</kw>
+<kw name="Input password" library="login_page">
+<arg>${password}</arg>
+<doc>Input password to password text box</doc>
+<kw name="Input Text To Element When Ready" library="common">
+<arg>${login_page.txt_password}</arg>
+<arg>${password}</arg>
+<kw name="Wait web element is visible" library="common">
+<arg>${location}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220216 18:25:36.738" endtime="20220216 18:25:36.758"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:36.738" endtime="20220216 18:25:36.758"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220216 18:25:36.758" level="INFO">Typing text 'Pass@word123' into text field 'xpath=//div//input[@placeholder='Please insert password']'.</msg>
+<status status="PASS" starttime="20220216 18:25:36.758" endtime="20220216 18:25:36.960"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:36.737" endtime="20220216 18:25:36.960"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:36.736" endtime="20220216 18:25:36.960"/>
+</kw>
+<kw name="Click login button" library="login_page">
+<doc>Click login button</doc>
+<kw name="Click Element When Ready" library="common">
+<arg>${login_page.btn_login}</arg>
+<kw name="Wait web element is visible" library="common">
+<arg>${location}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220216 18:25:36.962" endtime="20220216 18:25:36.986"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:36.962" endtime="20220216 18:25:36.986"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${location}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220216 18:25:36.987" level="INFO">Clicking element 'xpath=//button[@type='submit' and .='Log in']'.</msg>
+<status status="PASS" starttime="20220216 18:25:36.987" endtime="20220216 18:25:37.070"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:36.961" endtime="20220216 18:25:37.070"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:36.961" endtime="20220216 18:25:37.070"/>
+</kw>
+<kw name="Check go to home page" library="home_page">
+<doc>Check home page has show</doc>
+<kw name="Wait for loading disappear" library="common">
+<doc>global wait for loading disappear</doc>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Wait web element is not visible</arg>
+<arg>${common.fullscreen_loading}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Wait web element is not visible" library="common">
+<arg>${common.fullscreen_loading}</arg>
+<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" starttime="20220216 18:25:37.072" endtime="20220216 18:25:37.082"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:37.071" endtime="20220216 18:25:37.083"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:37.071" endtime="20220216 18:25:37.083"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:37.070" endtime="20220216 18:25:37.083"/>
+</kw>
+<kw name="Wait web element is visible" library="common">
+<arg>${home_page.search_bar}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220216 18:25:37.084" endtime="20220216 18:25:41.536"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:37.083" endtime="20220216 18:25:41.536"/>
+</kw>
+<kw name="Wait for loading disappear" library="common">
+<doc>global wait for loading disappear</doc>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Wait web element is not visible</arg>
+<arg>${common.fullscreen_loading}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Wait web element is not visible" library="common">
+<arg>${common.fullscreen_loading}</arg>
+<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" starttime="20220216 18:25:41.537" endtime="20220216 18:25:41.564"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:41.536" endtime="20220216 18:25:41.564"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:41.536" endtime="20220216 18:25:41.565"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:41.536" endtime="20220216 18:25:41.565"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:37.070" endtime="20220216 18:25:41.565"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:36.127" endtime="20220216 18:25:41.565"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:35.464" endtime="20220216 18:25:41.565"/>
+</kw>
+<kw name="Search product by value" library="search_keywords">
+<arg>${product_4901301259691.sku}</arg>
+<doc>Input search value</doc>
+<kw name="Input search bar" library="home_page">
+<arg>${value}</arg>
+<doc>Input search value to search text box</doc>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<arg>${home_page.search_bar}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" starttime="20220216 18:25:41.567" endtime="20220216 18:25:41.670"/>
+</kw>
+<kw name="Input Text To Element When Ready" library="common">
+<arg>${home_page.search_bar}</arg>
+<arg>${value}</arg>
+<kw name="Wait web element is visible" library="common">
+<arg>${location}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220216 18:25:41.674" endtime="20220216 18:25:41.689"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:41.672" endtime="20220216 18:25:41.689"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220216 18:25:41.690" level="INFO">Typing text '4901301259691' into text field 'xpath=//div[contains(@class,"HeaderLogin")]//input[@placeholder="Search product name or brand"]'.</msg>
+<status status="PASS" starttime="20220216 18:25:41.689" endtime="20220216 18:25:41.900"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:41.670" endtime="20220216 18:25:41.900"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:41.567" endtime="20220216 18:25:41.900"/>
+</kw>
+<kw name="Check search value" library="home_page">
+<arg>${value}</arg>
+<doc>Check search value has submited</doc>
+<kw name="Replace String" library="String">
+<var>${search_value}</var>
+<arg>${home_page.search_value}</arg>
+<arg>$type_value</arg>
+<arg>${value}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20220216 18:25:41.901" level="INFO">${search_value} = xpath=//input[contains(@class,"SearchBox") and @value="4901301259691"]</msg>
+<status status="PASS" starttime="20220216 18:25:41.901" endtime="20220216 18:25:41.901"/>
+</kw>
+<kw name="Wait web element is visible" library="common">
+<arg>${search_value}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220216 18:25:41.902" endtime="20220216 18:25:41.945"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:41.901" endtime="20220216 18:25:41.945"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:41.900" endtime="20220216 18:25:41.945"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:41.566" endtime="20220216 18:25:41.945"/>
+</kw>
+<kw name="Unfavorite when sku has already favorited" library="wishlist_keywords">
+<arg>${product_4901301259691.sku}</arg>
+<doc>Unfavorite when sku has already favorited</doc>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${is_favorite}</var>
+<arg>home_page.Sku should be marked as favorite</arg>
+<arg>${sku_product}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Sku should be marked as favorite" library="home_page">
+<arg>${sku_product}</arg>
+<doc>Sku should be marked as favorite please input sku</doc>
+<kw name="Replace String" library="String">
+<var>${btn_wishlist}</var>
+<arg>${home_page.btn_wishlist_enable}</arg>
+<arg>$product_sku</arg>
+<arg>${sku_product}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20220216 18:25:41.947" level="INFO">${btn_wishlist} = xpath=//div[@id='category-page']//div[@data-productid='4901301259691']//img[contains(@src,'icon-favorite')]</msg>
+<status status="PASS" starttime="20220216 18:25:41.947" endtime="20220216 18:25:41.947"/>
+</kw>
+<kw name="Wait web element is visible" library="common">
+<arg>${btn_wishlist}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220216 18:25:41.948" endtime="20220216 18:25:42.944"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:41.948" endtime="20220216 18:25:42.944"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:41.947" endtime="20220216 18:25:42.944"/>
+</kw>
+<msg timestamp="20220216 18:25:42.945" level="INFO">${is_favorite} = True</msg>
+<status status="PASS" starttime="20220216 18:25:41.946" endtime="20220216 18:25:42.945"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${is_favorite}'=='True'</arg>
+<arg>home_page.Click favorite button by sku</arg>
+<arg>${sku_product}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click favorite button by sku" library="home_page">
+<arg>${sku_product}</arg>
+<doc>Click favorite button please input sku</doc>
+<kw name="Replace String" library="String">
+<var>${btn_wishlist}</var>
+<arg>${home_page.btn_wishlist}</arg>
+<arg>$product_sku</arg>
+<arg>${sku_product}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20220216 18:25:42.946" level="INFO">${btn_wishlist} = xpath=//div[@id='category-page']//div[@data-productid='4901301259691']//img[contains(@class,'WishlistIcon')]</msg>
+<status status="PASS" starttime="20220216 18:25:42.945" endtime="20220216 18:25:42.946"/>
+</kw>
+<kw name="Click Element When Ready" library="common">
+<arg>${btn_wishlist}</arg>
+<kw name="Wait web element is visible" library="common">
+<arg>${location}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220216 18:25:42.947" endtime="20220216 18:25:42.966"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:42.947" endtime="20220216 18:25:42.966"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${location}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220216 18:25:42.967" level="INFO">Clicking element 'xpath=//div[@id='category-page']//div[@data-productid='4901301259691']//img[contains(@class,'WishlistIcon')]'.</msg>
+<status status="PASS" starttime="20220216 18:25:42.967" endtime="20220216 18:25:43.031"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:42.946" endtime="20220216 18:25:43.031"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:42.945" endtime="20220216 18:25:43.031"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:42.945" endtime="20220216 18:25:43.031"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:41.946" endtime="20220216 18:25:43.032"/>
+</kw>
+<kw name="Favorite product by product sku" library="wishlist_keywords">
+<arg>${product_4901301259691.sku}</arg>
+<doc>Favorited product if has not favorited</doc>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${is_favorite}</var>
+<arg>home_page.Sku should be marked as favorite</arg>
+<arg>${sku_product}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Sku should be marked as favorite" library="home_page">
+<arg>${sku_product}</arg>
+<doc>Sku should be marked as favorite please input sku</doc>
+<kw name="Replace String" library="String">
+<var>${btn_wishlist}</var>
+<arg>${home_page.btn_wishlist_enable}</arg>
+<arg>$product_sku</arg>
+<arg>${sku_product}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20220216 18:25:43.034" level="INFO">${btn_wishlist} = xpath=//div[@id='category-page']//div[@data-productid='4901301259691']//img[contains(@src,'icon-favorite')]</msg>
+<status status="PASS" starttime="20220216 18:25:43.034" endtime="20220216 18:25:43.034"/>
+</kw>
+<kw name="Wait web element is visible" library="common">
+<arg>${btn_wishlist}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220216 18:26:43.316" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220216 18:26:43.125" endtime="20220216 18:26:43.316"/>
+</kw>
+<msg timestamp="20220216 18:26:43.318" level="FAIL">Element 'xpath=//div[@id='category-page']//div[@data-productid='4901301259691']//img[contains(@src,'icon-favorite')]' not visible after 1 minute.</msg>
+<status status="FAIL" starttime="20220216 18:25:43.035" endtime="20220216 18:26:43.318"/>
+</kw>
+<status status="FAIL" starttime="20220216 18:25:43.034" endtime="20220216 18:26:43.319"/>
+</kw>
+<status status="FAIL" starttime="20220216 18:25:43.033" endtime="20220216 18:26:43.319"/>
+</kw>
+<msg timestamp="20220216 18:26:43.320" level="INFO">${is_favorite} = False</msg>
+<status status="PASS" starttime="20220216 18:25:43.033" endtime="20220216 18:26:43.320"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${is_favorite}'=='False'</arg>
+<arg>home_page.Click favorite button by sku</arg>
+<arg>${sku_product}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click favorite button by sku" library="home_page">
+<arg>${sku_product}</arg>
+<doc>Click favorite button please input sku</doc>
+<kw name="Replace String" library="String">
+<var>${btn_wishlist}</var>
+<arg>${home_page.btn_wishlist}</arg>
+<arg>$product_sku</arg>
+<arg>${sku_product}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20220216 18:26:43.321" level="INFO">${btn_wishlist} = xpath=//div[@id='category-page']//div[@data-productid='4901301259691']//img[contains(@class,'WishlistIcon')]</msg>
+<status status="PASS" starttime="20220216 18:26:43.320" endtime="20220216 18:26:43.321"/>
+</kw>
+<kw name="Click Element When Ready" library="common">
+<arg>${btn_wishlist}</arg>
+<kw name="Wait web element is visible" library="common">
+<arg>${location}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220216 18:26:43.322" endtime="20220216 18:26:43.367"/>
+</kw>
+<status status="PASS" starttime="20220216 18:26:43.321" endtime="20220216 18:26:43.367"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${location}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220216 18:26:43.367" level="INFO">Clicking element 'xpath=//div[@id='category-page']//div[@data-productid='4901301259691']//img[contains(@class,'WishlistIcon')]'.</msg>
+<status status="PASS" starttime="20220216 18:26:43.367" endtime="20220216 18:26:43.431"/>
+</kw>
+<status status="PASS" starttime="20220216 18:26:43.321" endtime="20220216 18:26:43.431"/>
+</kw>
+<status status="PASS" starttime="20220216 18:26:43.320" endtime="20220216 18:26:43.431"/>
+</kw>
+<status status="PASS" starttime="20220216 18:26:43.320" endtime="20220216 18:26:43.431"/>
+</kw>
+<status status="PASS" starttime="20220216 18:25:43.032" endtime="20220216 18:26:43.431"/>
+</kw>
+<kw name="Go to my list page" library="home_keywords">
+<doc>Go to my list</doc>
+<kw name="Click tab my list" library="home_page">
+<doc>Go to tab in My list bar</doc>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${home_page.btn_mylist_bar}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220216 18:26:43.433" endtime="20220216 18:26:43.722"/>
+</kw>
+<kw name="Click Element When Ready" library="common">
+<arg>${home_page.btn_mylist_bar}</arg>
+<kw name="Wait web element is visible" library="common">
+<arg>${location}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220216 18:26:43.724" endtime="20220216 18:26:43.748"/>
+</kw>
+<status status="PASS" starttime="20220216 18:26:43.723" endtime="20220216 18:26:43.748"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${location}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220216 18:26:43.748" level="INFO">Clicking element 'xpath=//div[@class='navigation-bar']//a[contains(@class,'navigation-link') and text()='My List']'.</msg>
+<status status="PASS" starttime="20220216 18:26:43.748" endtime="20220216 18:26:43.895"/>
+</kw>
+<status status="PASS" starttime="20220216 18:26:43.722" endtime="20220216 18:26:43.896"/>
+</kw>
+<kw name="Wait until loading cart disappear" library="home_page">
+<kw name="Wait web element is not visible" library="common">
+<arg>${home_page.loading_cart}</arg>
+<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" starttime="20220216 18:26:43.897" endtime="20220216 18:26:43.948"/>
+</kw>
+<status status="PASS" starttime="20220216 18:26:43.896" endtime="20220216 18:26:43.948"/>
+</kw>
+<status status="PASS" starttime="20220216 18:26:43.896" endtime="20220216 18:26:43.948"/>
+</kw>
+<status status="PASS" starttime="20220216 18:26:43.432" endtime="20220216 18:26:43.948"/>
+</kw>
+<kw name="Check my list page is displayed" library="mylist_page">
+<doc>Check my list page</doc>
+<kw name="Wait web element is visible" library="common">
+<arg>${mylist_page.lbl_my_list_head}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220216 18:26:43.949" endtime="20220216 18:26:44.177"/>
+</kw>
+<status status="PASS" starttime="20220216 18:26:43.949" endtime="20220216 18:26:44.177"/>
+</kw>
+<kw name="Wait web element is visible" library="common">
+<arg>${mylist_page.select_sort_by}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220216 18:26:44.179" endtime="20220216 18:26:44.249"/>
+</kw>
+<status status="PASS" starttime="20220216 18:26:44.177" endtime="20220216 18:26:44.249"/>
+</kw>
+<status status="PASS" starttime="20220216 18:26:43.948" endtime="20220216 18:26:44.250"/>
+</kw>
+<status status="PASS" starttime="20220216 18:26:43.432" endtime="20220216 18:26:44.250"/>
+</kw>
+<kw name="My list should contain sku" library="mylist_page">
+<arg>${product_4901301259691.sku}</arg>
+<doc>My list should contain sku - input sku</doc>
+<kw name="Replace String" library="String">
+<var>${product_sku}</var>
+<arg>${mylist_page.product_sku}</arg>
+<arg>$sku</arg>
+<arg>${sku}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20220216 18:26:44.255" level="INFO">${product_sku} = xpath=//div[@data-productid='4901301259691']</msg>
+<status status="PASS" starttime="20220216 18:26:44.252" endtime="20220216 18:26:44.255"/>
+</kw>
+<kw name="Wait web element is visible" library="common">
+<arg>${product_sku}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${location}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220216 18:26:44.257" endtime="20220216 18:26:44.555"/>
+</kw>
+<status status="PASS" starttime="20220216 18:26:44.256" endtime="20220216 18:26:44.555"/>
+</kw>
+<status status="PASS" starttime="20220216 18:26:44.251" endtime="20220216 18:26:44.555"/>
+</kw>
+<kw name="Test tear down" library="common" type="TEARDOWN">
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<arg>Capture Element Screenshot</arg>
+<arg>xpath=//body</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" starttime="20220216 18:26:44.556" endtime="20220216 18:26:44.556"/>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20220216 18:26:44.556" endtime="20220216 18:26:46.752"/>
+</kw>
+<status status="PASS" starttime="20220216 18:26:44.556" endtime="20220216 18:26:46.752"/>
+</kw>
+<doc>Verify that user can add wishlist successfully</doc>
+<status status="PASS" starttime="20220216 18:25:35.462" endtime="20220216 18:26:46.752"/>
+</test>
+<status status="PASS" starttime="20220216 18:25:29.897" endtime="20220216 18:26:46.761"/>
+</suite>
+<status status="PASS" starttime="20220216 18:25:29.872" endtime="20220216 18:26:46.770"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Web">Web</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Add Product To Wishlist">Web.Add Product To Wishlist</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
